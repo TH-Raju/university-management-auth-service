@@ -38,3 +38,15 @@
 # npm i --save-dev @types/express be like
 
 - yarn add -D @types/express
+
+# Modular Pattern
+
+- src/
+  - app/
+    - modules/
+      - users/
+        - users.interface.ts
+        - users.model.ts
+        - users.service.ts
+        - users.controller.ts
+        - users.route.ts
