@@ -14,6 +14,7 @@
 - .env
   - DATABASE_URL= mongodb+srv://use_name:password@cluster0.v2rysfp.mongodb.net/?retryWrites=true&w=majority
 - yarn add ts-node-dev --dev
+- yarn add cors
 
 # create folder
 
