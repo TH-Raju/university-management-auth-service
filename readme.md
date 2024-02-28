@@ -26,6 +26,7 @@
 - - .
     (For logger)
 - yarn add winston
+- yarn add winston-daily-rotate-file
 
 # create folder
 
@@ -53,3 +54,7 @@
         - users.service.ts
         - users.controller.ts
         - users.route.ts
+
+# Start from level-2
+
+# 12-8: What Is Error Handling

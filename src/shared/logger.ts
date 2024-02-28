@@ -1,5 +1,6 @@
 import { createLogger, format, transports } from 'winston'
 const { combine, timestamp, label, printf, prettyPrint } = format
+import DailyRotateFile from 'winston-daily-rotate-file'
 import path from 'path'
 
 // custom log format
@@ -20,9 +21,18 @@ const logger = createLogger({
   ),
   transports: [
     new transports.Console(),
-    new transports.File({
-      filename: path.join(process.cwd(), 'logs', 'winston', 'success.log'),
-      level: 'info',
+    new DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'logs',
+        'winston',
+        'success',
+        'um-%DATE%-success.log',
+      ),
+      datePattern: 'YYYY-DD-MM-HH',
+      zippedArchive: true,
+      maxSize: '20m',
+      maxFiles: '10d',
     }),
   ],
 })
@@ -37,9 +47,18 @@ const errorLogger = createLogger({
   ),
   transports: [
     new transports.Console(),
-    new transports.File({
-      filename: path.join(process.cwd(), 'logs', 'winston', 'error.log'),
-      level: 'error',
+    new transports.DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'logs',
+        'winston',
+        'errors',
+        'um-%DATE%-error.log',
+      ),
+      datePattern: 'YYYY-DD-MM-HH',
+      zippedArchive: true,
+      maxSize: '20m',
+      maxFiles: '10d',
     }),
   ],
 })
