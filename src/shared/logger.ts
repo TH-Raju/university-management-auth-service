@@ -20,7 +20,7 @@ const logger = createLogger({
     prettyPrint(),
   ),
   transports: [
-    new transports.Console(),
+    // new transports.Console(),
     new DailyRotateFile({
       filename: path.join(
         process.cwd(),
@@ -46,7 +46,7 @@ const errorLogger = createLogger({
     prettyPrint(),
   ),
   transports: [
-    new transports.Console(),
+    // new transports.Console(),
     new transports.DailyRotateFile({
       filename: path.join(
         process.cwd(),

@@ -10,3 +10,27 @@
   label: 'Success',
   timestamp: '2024-02-28T01:00:26.053Z'
 }
+{
+  message: 'Database connected Successfully',
+  level: 'info',
+  label: 'Success',
+  timestamp: '2024-02-28T01:01:33.017Z'
+}
+{
+  message: 'Application listening on port 5000',
+  level: 'info',
+  label: 'Success',
+  timestamp: '2024-02-28T01:01:33.022Z'
+}
+{
+  message: 'Database connected Successfully',
+  level: 'info',
+  label: 'Success',
+  timestamp: '2024-02-28T01:04:25.836Z'
+}
+{
+  message: 'Application listening on port 5000',
+  level: 'info',
+  label: 'Success',
+  timestamp: '2024-02-28T01:04:25.840Z'
+}
