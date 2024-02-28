@@ -23,6 +23,9 @@
 - yarn add -D eslint-config-prettier
 - yarn add --dev husky
 - yarn add -D lint-staged
+- - .
+    (For logger)
+- yarn add winston
 
 # create folder
 
