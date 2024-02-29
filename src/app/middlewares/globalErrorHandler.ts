@@ -13,6 +13,10 @@ const globalErrorHandler = (
   const message = 'Something went wrong!!!'
   const errorMessages: IGenericErrorMessage[] = []
 
+  if (err?.name === 'ValidationError') {
+    const simplifiedError = handleValidationError(err)
+  }
+
   res.status(statusCode).json({
     success: false,
     message,
