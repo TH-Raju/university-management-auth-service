@@ -2,19 +2,45 @@
 import { NextFunction, Request, Response } from 'express'
 import config from '../../config'
 import { IGenericErrorMessage } from '../../interfaces/error'
+import handleValidationError from '../../errors/handleValidationError'
+import ApiError from '../../errors/ApiError'
+import { Error } from 'mongoose'
 
 const globalErrorHandler = (
-  err: Error,
+  err: Error.ValidationError,
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
-  const statusCode = 500
-  const message = 'Something went wrong!!!'
-  const errorMessages: IGenericErrorMessage[] = []
+  let statusCode = 500
+  let message = 'Something went wrong!!!'
+  let errorMessages: IGenericErrorMessage[] = []
 
   if (err?.name === 'ValidationError') {
     const simplifiedError = handleValidationError(err)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+  } else if (err instanceof ApiError) {
+    statusCode = err?.statusCode
+    message = err.message
+    errorMessages = err?.message
+      ? [
+          {
+            path: '',
+            message: err.message,
+          },
+        ]
+      : []
+  } else if (err instanceof Error) {
+    message = err?.message
+    errorMessages = err?.message
+      ? [
+          {
+            path: '',
+            message: err.message,
+          },
+        ]
+      : []
   }
 
   res.status(statusCode).json({
