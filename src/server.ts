@@ -1,11 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import mongoose from 'mongoose'
 import app from './app'
 import config from './config'
 import { errorLogger, logger } from './shared/logger'
 import { Server } from 'http'
 
-async function server() {
-  let server: Server
+process.on('uncaughtException', error => {
+  errorLogger.error('Uncaught Exception', error)
+  process.exit(1)
+})
+
+let server: Server
+async function main() {
   try {
     await mongoose.connect(config.database_url as string)
     logger.info(`Database connected Successfully`)
@@ -18,7 +24,6 @@ async function server() {
   }
 
   process.on('unhandledRejection', error => {
-    console.log('Unhandled rejection is detected, we close the server')
     if (server) {
       server.close(() => {
         errorLogger.error(error)
@@ -30,4 +35,11 @@ async function server() {
   })
 }
 
-server()
+main()
+
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM is received')
+  if (server) {
+    server.close()
+  }
+})
