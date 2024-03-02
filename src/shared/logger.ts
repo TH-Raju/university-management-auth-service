@@ -1,5 +1,5 @@
 import { createLogger, format, transports } from 'winston'
-const { combine, timestamp, label, printf, prettyPrint } = format
+const { combine, timestamp, label, printf } = format // prettyPrint
 import DailyRotateFile from 'winston-daily-rotate-file'
 import path from 'path'
 
@@ -10,17 +10,21 @@ const myFormat = printf(({ level, message, label, timestamp }) => {
     date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
   return `${date.toDateString()} ${hour} [${label}] ${level}: ${message}`
 })
-
-const logger = createLogger({
-  level: 'info',
+/*
+user prettiyPrint when I want to watch the error in console json format
   format: combine(
     label({ label: 'Success' }),
     timestamp(),
     myFormat,
-    prettyPrint(),
+    prettyPrint(), // --it it
   ),
+  */
+
+const logger = createLogger({
+  level: 'info',
+  format: combine(label({ label: 'Success' }), timestamp(), myFormat),
   transports: [
-    // new transports.Console(),
+    new transports.Console(),
     new DailyRotateFile({
       filename: path.join(
         process.cwd(),
@@ -39,14 +43,9 @@ const logger = createLogger({
 
 const errorLogger = createLogger({
   level: 'error',
-  format: combine(
-    label({ label: 'Bug Error!' }),
-    timestamp(),
-    myFormat,
-    prettyPrint(),
-  ),
+  format: combine(label({ label: 'Bug Error!' }), timestamp(), myFormat),
   transports: [
-    // new transports.Console(),
+    new transports.Console(),
     new transports.DailyRotateFile({
       filename: path.join(
         process.cwd(),

@@ -1,0 +1,17 @@
+{
+  issues: [
+    {
+      code: 'invalid_type',
+      expected: 'string',
+      received: 'undefined',
+      path: [ 'body', 'role' ],
+      message: 'Role must be provided. it required'
+    }
+  ],
+  addIssue: [Function (anonymous)],
+  addIssues: [Function (anonymous)],
+  name: 'ZodError',
+  level: 'error',
+  label: 'Bug Error!',
+  timestamp: '2024-03-02T20:09:23.241Z'
+}

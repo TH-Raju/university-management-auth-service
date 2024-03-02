@@ -23,6 +23,7 @@
 - yarn add -D eslint-config-prettier
 - yarn add --dev husky
 - yarn add -D lint-staged
+- yarn add zod
 - - .
     (For logger)
 - yarn add winston
