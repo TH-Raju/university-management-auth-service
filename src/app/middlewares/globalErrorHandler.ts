@@ -1,43 +1,39 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-undefined */
-import { NextFunction, Request, Response } from 'express'
+import { ErrorRequestHandler } from 'express'
 import config from '../../config'
 import { IGenericErrorMessage } from '../../interfaces/error'
 import handleValidationError from '../../errors/handleValidationError'
 import ApiError from '../../errors/ApiError'
 import { Error } from 'mongoose'
 
-const globalErrorHandler = (
-  err: Error.ValidationError,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   let statusCode = 500
   let message = 'Something went wrong!!!'
   let errorMessages: IGenericErrorMessage[] = []
 
-  if (err?.name === 'ValidationError') {
-    const simplifiedError = handleValidationError(err)
+  if (error?.name === 'ValidationError') {
+    const simplifiedError = handleValidationError(error)
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
-  } else if (err instanceof ApiError) {
-    statusCode = err?.statusCode
-    message = err.message
-    errorMessages = err?.message
+  } else if (error instanceof ApiError) {
+    statusCode = error?.statusCode
+    message = error.message
+    errorMessages = error?.message
       ? [
           {
             path: '',
-            message: err.message,
+            message: error.message,
           },
         ]
       : []
-  } else if (err instanceof Error) {
-    message = err?.message
-    errorMessages = err?.message
+  } else if (error instanceof Error) {
+    message = error?.message
+    errorMessages = error?.message
       ? [
           {
             path: '',
-            message: err.message,
+            message: error.message,
           },
         ]
       : []
@@ -47,7 +43,7 @@ const globalErrorHandler = (
     success: false,
     message,
     errorMessages,
-    stack: config.env !== 'production' ? err?.stack : undefined,
+    stack: config.env !== 'production' ? error?.stack : undefined,
   })
   next()
 }
