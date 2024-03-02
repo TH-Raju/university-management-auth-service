@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-undefined */
 import { ErrorRequestHandler } from 'express'
@@ -6,8 +8,13 @@ import { IGenericErrorMessage } from '../../interfaces/error'
 import handleValidationError from '../../errors/handleValidationError'
 import ApiError from '../../errors/ApiError'
 import { Error } from 'mongoose'
+import { errorLogger } from '../../shared/logger'
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
+  config.env == 'development'
+    ? console.log('Global Error Handler')
+    : errorLogger.error('Global Error Handler ~', error)
+
   let statusCode = 500
   let message = 'Something went wrong!!!'
   let errorMessages: IGenericErrorMessage[] = []
