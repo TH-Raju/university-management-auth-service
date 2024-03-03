@@ -44,6 +44,11 @@
             "date": 1709420602242,
             "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\success\\um-2024-03-03-05-success.log",
             "hash": "237eae68466a248fe52dec921396c4543e9078b251012a8067ad05c583a2c08e"
+        },
+        {
+            "date": 1709424206563,
+            "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\success\\um-2024-03-03-06-success.log",
+            "hash": "f71d658ebb7116b99423228e00e67221f6c8acf96ad2eafa3fc216092c8351ed"
         }
     ],
     "hashType": "sha256"
