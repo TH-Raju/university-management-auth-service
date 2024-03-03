@@ -1,9 +1,15 @@
+/* eslint-disable no-undefined */
 import { Response } from 'express';
 
 type IApiResponse<T> = {
   statusCode: number;
   success: boolean;
   message?: string | null | undefined;
+  meta?: {
+    page: number;
+    limit: number;
+    total: number;
+  };
   data?: T | null | undefined;
 };
 const sendResponse = <T>(res: Response, data: IApiResponse<T>): void => {
@@ -11,7 +17,8 @@ const sendResponse = <T>(res: Response, data: IApiResponse<T>): void => {
     statusCode: data.statusCode,
     success: data.success,
     message: data.message || null,
-    data: data.data || null,
+    meta: data.meta || null || undefined,
+    data: data.data || null || undefined,
   };
   res.status(data.statusCode).json(responseData);
 };
