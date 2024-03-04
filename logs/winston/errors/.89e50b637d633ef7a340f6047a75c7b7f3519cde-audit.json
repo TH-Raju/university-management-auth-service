@@ -59,6 +59,26 @@
             "date": 1709503704985,
             "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\errors\\um-2024-04-03-04-error.log",
             "hash": "d9a52be101f354033f2df4b6e39f5ec2bf4cc17e4eb28c33356122ebe2137a7e"
+        },
+        {
+            "date": 1709508541516,
+            "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\errors\\um-2024-04-03-05-error.log",
+            "hash": "4e59ffea00b7f0c703674519466db5bd1964b3a467a84f8d3fa24add1f311019"
+        },
+        {
+            "date": 1709513341100,
+            "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\errors\\um-2024-04-03-06-error.log",
+            "hash": "ca2ceff747b540d7578c89a0bd43f49cf9731880781c23ca6a47c1dfca06911e"
+        },
+        {
+            "date": 1709589124556,
+            "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\errors\\um-2024-05-03-03-error.log",
+            "hash": "dbf26c05d138c926c8840147fdb696197fa6c56e7d8a25d885b830f155307a64"
+        },
+        {
+            "date": 1709589709855,
+            "name": "C:\\Users\\th_raju\\raju\\self\\university-management-auth-backend\\logs\\winston\\errors\\um-2024-05-03-04-error.log",
+            "hash": "3129936a1c1bff5830544c69128fbc931c84ffdc3036484f781e5d6fb7ef9afa"
         }
     ],
     "hashType": "sha256"
