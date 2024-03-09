@@ -2,6 +2,9 @@
 
 # Prerequisites
 
+- Node.js
+- VsCode
+
 - npm init
 - yarn add typescript --dev
 - yarn add mongoose
