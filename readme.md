@@ -1,5 +1,7 @@
 # Setup Project
 
+# Prerequisites
+
 - npm init
 - yarn add typescript --dev
 - yarn add mongoose
